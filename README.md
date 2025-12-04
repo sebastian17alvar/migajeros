@@ -1,0 +1,2 @@
+# migajeros
+registro de migajeros
