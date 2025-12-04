@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Nacional de Migajeros del Ecuador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Tipografía institucional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --azul: #0A3A67;
+            --azul-oscuro: #06294D;
+            --azul-claro: #1E68A8;
+            --gris-claro: #F2F5F9;
+            --gris: #D8DFE7;
+            --blanco: #ffffff;
+            --primario: #1E68A8;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: var(--azul);
+            color: var(--blanco);
+        }
+
+        /* HEADER */
+        header {
+            background: var(--azul-oscuro);
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 3px solid var(--azul-claro);
+        }
+
+        header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* CONTENEDOR */
+        main {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        /* TARJETAS */
+        .card {
+            background: var(--blanco);
+            color: #06294D;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.20);
+            margin-bottom: 35px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: var(--azul-oscuro);
+        }
+
+        /* FORMULARIO */
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid var(--gris);
+            background: var(--gris-claro);
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: #06294D;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primario);
+            background: var(--blanco);
+        }
+
+        textarea {
+            grid-column: 1 / 3;
+            min-height: 90px;
+        }
+
+        /* BOTÓN */
+        .btn-primary {
+            grid-column: 1 / 3;
+            background: var(--primario);
+            padding: 14px;
+            color: var(--blanco);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #15548A;
+        }
+
+        /* BUSCADOR */
+        .buscador input {
+            background: var(--gris-claro);
+            border-radius: 8px;
+        }
+
+        /* TABLA */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: var(--azul-claro);
+            color: var(--blanco);
+            padding: 12px;
+        }
+
+        td {
+            background: var(--gris-claro);
+            padding: 10px;
+            border-bottom: 2px solid var(--gris);
+        }
+
+        tr:hover td {
+            background: #e6eef7;
+        }
+
+        .empty {
+            color: #555;
+            padding: 10px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <!-- LOGO MIGAJEROS (Base64 funcional) -->
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+7oehAAAACXBIWXMAAAsTAAALEwEAmpwYAAACJ0lEQVR4nO3TMQ2DMAwEwPz/p14DMbTCEiLMIe0V+fuVUWEL7qbWd5MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALx69Y2bds2bdt29Q+HTv8CLdgNwU0eJOEBAAAAAAAAwF4gwgAAAAAAAAD4gQgAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAAPABYgwAAAAAAADwAWIMAAAAAAAA8AFiDAAAAAAAAAPABYgwAAAAAAADwAWIMAAAAAAAA8O+B/wCS3D+l5vjLEwAAAABJRU5ErkJggg==" />
+
+    <h1>Registro Nacional de Migajeros del Ecuador</h1>
+</header>
+
+<main>
+
+    <!-- FORMULARIO -->
+    <section class="card">
+        <h2>Añadir Registro</h2>
+
+        <form id="formMigajero">
+
+            <input type="text" id="nombres" placeholder="Nombres" required>
+            <input type="text" id="apellido" placeholder="Apellido" required>
+
+            <input type="number" id="edad" placeholder="Edad" required>
+            <input type="text" id="ocupacion" placeholder="Ocupación">
+
+            <input type="date" id="fechaRegistro" required>
+
+            <textarea id="anecdota" placeholder="Anécdota del migajero..." required></textarea>
+
+            <button class="btn-primary" type="submit">Guardar Registro</button>
+        </form>
+    </section>
+
+    <!-- LISTADO -->
+    <section class="card">
+        <h2>Consultar Registros</h2>
+
+        <div class="buscador">
+            <input type="text" id="buscador" placeholder="Buscar por nombre, apellido u ocupación...">
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombres</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Ocupación</th>
+                    <th>Fecha</th>
+                    <th>Anécdota</th>
+                </tr>
+            </thead>
+            <tbody id="tablaRegistros"></tbody>
+        </table>
+
+        <p class="empty" id="emptyMsg">No hay registros todavía.</p>
+    </section>
+
+</main>
+
+<script>
+
+let registros = JSON.parse(localStorage.getItem("migajeros")) || [];
+
+function renderTabla(filtro = "") {
+    const tbody = document.getElementById("tablaRegistros");
+    const emptyMsg = document.getElementById("emptyMsg");
+
+    tbody.innerHTML = "";
+
+    let filtrados = registros.filter(r =>
+        (r.nombres + " " + r.apellido + " " + r.ocupacion)
+        .toLowerCase()
+        .includes(filtro.toLowerCase())
+    );
+
+    if (filtrados.length === 0) {
+        emptyMsg.style.display = "block";
+        return;
+    }
+
+    emptyMsg.style.display = "none";
+
+    filtrados.forEach((r, index) => {
+        const row = `
+            <tr>
+                <td>${index+1}</td>
+                <td>${r.nombres}</td>
+                <td>${r.apellido}</td>
+                <td>${r.edad}</td>
+                <td>${r.ocupacion || "No especificada"}</td>
+                <td>${r.fecha}</td>
+                <td>${r.anecdota}</td>
+            </tr>
+        `;
+        tbody.innerHTML += row;
+    });
+}
+
+document.getElementById("formMigajero").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const nuevo = {
+        nombres: nombres.value,
+        apellido: apellido.value,
+        edad: edad.value,
+        ocupacion: ocupacion.value,
+        fecha: fechaRegistro.value,
+        anecdota: anecdota.value
+    };
+
+    registros.push(nuevo);
+    localStorage.setItem("migajeros", JSON.stringify(registros));
+
+    renderTabla();
+    e.target.reset();
+});
+
+document.getElementById("buscador").addEventListener("input", e => {
+    renderTabla(e.target.value);
+});
+
+renderTabla();
+
+</script>
+
+</body>
+</html>
